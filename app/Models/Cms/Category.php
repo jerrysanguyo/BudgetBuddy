@@ -2,6 +2,7 @@
 
 namespace App\Models\Cms;
 
+use App\Models\Transaction\PersonalTransaction;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -23,5 +24,10 @@ class Category extends Model
     public function type()
     {
         return $this->belongsTo(Type::class, 'type_id');
+    }
+
+    public function personal_transaction()
+    {
+        return $this->hasMany(PersonalTransaction::class, 'category_id');
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Auth;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Transaction\PersonalTransaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,5 +31,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public static function getAllUser()
+    {
+        return self::all();
+    }
+
+    public function personal_transaction()
+    {
+        return $this->hasMany(PersonalTransaction::class, 'user_id');
     }
 }

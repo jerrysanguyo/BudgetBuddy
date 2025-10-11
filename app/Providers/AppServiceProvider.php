@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom([
             database_path('migrations/cms'),
             database_path('migrations/auth'),
+            database_path('migrations/transaction'),
         ]);
     }
 }
