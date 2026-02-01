@@ -2,4 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'app');
+Route::middleware('guest')->group(function () {
+    Route::view('{any}', 'app')->where('any', '.*');
+});

@@ -1,6 +1,12 @@
-import './bootstrap';
+import "./bootstrap";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Landing from "./pages/Landing";
+import { BrowserRouter } from "react-router-dom";
 
-createRoot(document.getElementById("app")).render(<Landing />);
+import App from "./guest_route";
+
+createRoot(document.getElementById("app")).render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);

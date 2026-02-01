@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const features = [
     {
@@ -49,8 +50,8 @@ export default function Landing() {
 
             <header className="relative">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 sm:px-6">
-                    <a
-                        href="/"
+                    <Link
+                        to="/"
                         className="group inline-flex items-center gap-2"
                     >
                         <span className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 text-white shadow-sm transition group-hover:-rotate-3">
@@ -64,7 +65,7 @@ export default function Landing() {
                                 Playful budget tracking
                             </div>
                         </div>
-                    </a>
+                    </Link>
 
                     <nav className="hidden items-center gap-6 text-sm text-slate-600 sm:flex">
                         <button
@@ -92,27 +93,27 @@ export default function Landing() {
                         </button>
 
                         <div className="ml-2 flex items-center gap-3">
-                            <a
-                                href="/login"
+                            <Link
+                                to="/login"
                                 className="rounded-full px-4 py-2 hover:bg-slate-100"
                             >
                                 Sign in
-                            </a>
-                            <a
-                                href="/register"
+                            </Link>
+                            <Link
+                                to="/register"
                                 className="rounded-full bg-slate-900 px-4 py-2 font-semibold text-white shadow-sm hover:bg-slate-800"
                             >
                                 Get started
-                            </a>
+                            </Link>
                         </div>
                     </nav>
 
-                    <a
-                        href="/register"
+                    <Link
+                        to="/register"
                         className="sm:hidden rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm"
                     >
                         Start
-                    </a>
+                    </Link>
                 </div>
             </header>
 
@@ -133,7 +134,7 @@ export default function Landing() {
                                     game
                                     <span className="absolute -bottom-1 left-0 h-3 w-full rounded-full bg-rose-200/70 -z-10" />
                                 </span>
-                                — not a chore.
+                                , not a chore.
                             </h1>
 
                             <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-600">
@@ -143,13 +144,13 @@ export default function Landing() {
                             </p>
 
                             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-                                <a
-                                    href="/register"
+                                <Link
+                                    to="/register"
                                     className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
                                 >
                                     Create your budget
                                     <span aria-hidden>→</span>
-                                </a>
+                                </Link>
 
                                 <button
                                     type="button"
@@ -321,12 +322,12 @@ export default function Landing() {
                                 matters: clarity.
                             </p>
                         </div>
-                        <a
-                            href="/register"
+                        <Link
+                            to="/register"
                             className="inline-flex w-fit items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
                         >
                             Try it free →
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -450,18 +451,18 @@ export default function Landing() {
                                 surprised how much clarity you get.
                             </p>
                             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                                <a
-                                    href="/register"
+                                <Link
+                                    to="/register"
                                     className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-100"
                                 >
                                     Create account →
-                                </a>
-                                <a
-                                    href="/login"
+                                </Link>
+                                <Link
+                                    to="/login"
                                     className="inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/15"
                                 >
                                     I already have one
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="mt-8 rounded-3xl bg-white/10 p-5 ring-1 ring-white/15">
@@ -478,32 +479,51 @@ export default function Landing() {
                     </div>
                 </section>
 
-                <footer className="relative border-t border-slate-200/70 bg-white/60 backdrop-blur">
-                    <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-10 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-                        <div className="flex items-center gap-2">
-                            <span className="grid h-9 w-9 place-items-center rounded-2xl bg-slate-900 text-white">
-                                💰
-                            </span>
-                            <span className="font-semibold text-slate-800">
-                                BudgetBuddy
-                            </span>
-                            <span className="text-slate-400">•</span>
-                            <span>© {new Date().getFullYear()}</span>
-                        </div>
+                <footer className="relative border-t border-slate-200/70 bg-white/70 backdrop-blur">
+                    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+                        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+                            {/* Brand */}
+                            <div className="flex items-center gap-3">
+                                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 text-white shadow-sm">
+                                    💰
+                                </span>
 
-                        <div className="flex flex-wrap gap-4">
-                            <a
-                                className="hover:text-slate-900"
-                                href="#features"
-                            >
-                                Features
-                            </a>
-                            <a className="hover:text-slate-900" href="#how">
-                                How it works
-                            </a>
-                            <a className="hover:text-slate-900" href="#faq">
-                                FAQ
-                            </a>
+                                <div className="flex flex-col">
+                                    <span className="text-sm font-semibold text-slate-900">
+                                        BudgetBuddy
+                                    </span>
+                                    <span className="text-xs text-slate-500">
+                                        © {new Date().getFullYear()} • All
+                                        rights reserved
+                                    </span>
+                                </div>
+                            </div>
+
+                            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
+                                <button
+                                    type="button"
+                                    onClick={() => scrollToSection("features")}
+                                    className="transition hover:text-slate-900"
+                                >
+                                    Features
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={() => scrollToSection("how")}
+                                    className="transition hover:text-slate-900"
+                                >
+                                    How it works
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={() => scrollToSection("faq")}
+                                    className="transition hover:text-slate-900"
+                                >
+                                    FAQ
+                                </button>
+                            </nav>
                         </div>
                     </div>
                 </footer>
