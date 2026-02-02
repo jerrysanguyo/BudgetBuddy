@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@inertiajs/react";
+import { route } from "ziggy-js";
+import logo from "@/assets/images/logo.webp";
 
 const features = [
     {
@@ -51,11 +53,15 @@ export default function Landing() {
             <header className="relative">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 sm:px-6">
                     <Link
-                        to="/"
+                        href={route("landing")}
                         className="group inline-flex items-center gap-2"
                     >
-                        <span className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 text-white shadow-sm transition group-hover:-rotate-3">
-                            💰
+                        <span className="flex items-center transition group-hover:-rotate-3">
+                            <img
+                                src={logo}
+                                alt="BudgetBuddy Logo"
+                                className="h-12 w-auto object-contain sm:h-24"
+                            />
                         </span>
                         <div className="leading-tight">
                             <div className="text-base font-extrabold tracking-tight">
@@ -94,13 +100,13 @@ export default function Landing() {
 
                         <div className="ml-2 flex items-center gap-3">
                             <Link
-                                to="/login"
+                                href={route("login")}
                                 className="rounded-full px-4 py-2 hover:bg-slate-100"
                             >
                                 Sign in
                             </Link>
                             <Link
-                                to="/register"
+                                href={route("register")}
                                 className="rounded-full bg-slate-900 px-4 py-2 font-semibold text-white shadow-sm hover:bg-slate-800"
                             >
                                 Get started
@@ -109,7 +115,7 @@ export default function Landing() {
                     </nav>
 
                     <Link
-                        to="/register"
+                        href={route("register")}
                         className="sm:hidden rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm"
                     >
                         Start
@@ -145,7 +151,7 @@ export default function Landing() {
 
                             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                                 <Link
-                                    to="/register"
+                                    href={route("register")}
                                     className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
                                 >
                                     Create your budget
@@ -323,7 +329,7 @@ export default function Landing() {
                             </p>
                         </div>
                         <Link
-                            to="/register"
+                            href={route("register")}
                             className="inline-flex w-fit items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
                         >
                             Try it free →
@@ -452,13 +458,13 @@ export default function Landing() {
                             </p>
                             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                                 <Link
-                                    to="/register"
+                                    href={route("register")}
                                     className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-100"
                                 >
                                     Create account →
                                 </Link>
                                 <Link
-                                    to="/login"
+                                    href={route("login")}
                                     className="inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/15"
                                 >
                                     I already have one

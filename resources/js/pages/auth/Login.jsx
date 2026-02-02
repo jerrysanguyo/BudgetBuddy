@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@inertiajs/react";
+import logo from "@/assets/images/logo.webp";
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -95,7 +96,7 @@ export default function Login() {
             <div className="relative mx-auto flex max-w-6xl items-center justify-center px-4 py-10 sm:px-6">
                 <div className="absolute left-4 top-6 sm:left-6">
                     <Link
-                        to="/"
+                        href={route("landing")}
                         className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-white/70 hover:text-slate-900 hover:ring-1 hover:ring-slate-200"
                     >
                         <span aria-hidden>←</span>
@@ -105,14 +106,18 @@ export default function Login() {
                 <div className="w-full max-w-md">
                     <div className="mb-6 text-center">
                         <Link
-                            to="/"
+                            href={route("landing")}
                             className="inline-flex items-center justify-center gap-2"
                         >
-                            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 text-white shadow-sm">
-                                💰
+                            <span className="flex items-center transition group-hover:-rotate-3">
+                                <img
+                                    src={logo}
+                                    alt="BudgetBuddy Logo"
+                                    className="h-12 w-auto object-contain sm:h-24"
+                                />
                             </span>
                         </Link>
-                        <h1 className="mt-4 text-3xl font-black tracking-tight text-slate-900">
+                        <h1 className="text-3xl font-black tracking-tight text-slate-900">
                             Welcome back
                         </h1>
                         <p className="mt-2 text-sm text-slate-600">
@@ -200,7 +205,7 @@ export default function Login() {
                             <div className="pt-2 text-center text-sm text-slate-600">
                                 New here?{" "}
                                 <Link
-                                    to="/register"
+                                    href={route("register")}
                                     className="font-semibold text-slate-900 hover:underline"
                                 >
                                     Create an account

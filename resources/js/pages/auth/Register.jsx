@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@inertiajs/react";
+import logo from "@/assets/images/logo.webp";
 
 export default function Register() {
     const [form, setForm] = useState({
@@ -12,7 +13,7 @@ export default function Register() {
 
     const [showPass, setShowPass] = useState(false);
     const [showPass2, setShowPass2] = useState(false);
-    
+
     const [errors, setErrors] = useState({});
     const [serverMessage, setServerMessage] = useState("");
     const [submitting, setSubmitting] = useState(false);
@@ -59,20 +60,20 @@ export default function Register() {
                     password_confirmation: form.password_confirmation,
                 }),
             });
-            
+
             if (res.status === 422) {
                 const data = await res.json();
                 setErrors(data?.errors || {});
                 return;
             }
-            
+
             if (!res.ok) {
                 const text = await res.text();
                 setServerMessage("Something went wrong. Please try again.");
                 console.error(text);
                 return;
             }
-            
+
             window.location.href = "/login";
         } catch (err) {
             console.error(err);
@@ -102,7 +103,7 @@ export default function Register() {
             <div className="relative mx-auto flex max-w-6xl items-center justify-center px-4 py-10 sm:px-6">
                 <div className="absolute left-4 top-6 sm:left-6">
                     <Link
-                        to="/"
+                        href={route("landing")}
                         className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-white/70 hover:text-slate-900 hover:ring-1 hover:ring-slate-200"
                     >
                         <span aria-hidden>←</span>
@@ -112,21 +113,25 @@ export default function Register() {
                 <div className="w-full max-w-md">
                     <div className="mb-6 text-center">
                         <Link
-                            to="/"
+                            href={route("landing")}
                             className="inline-flex items-center justify-center gap-2"
                         >
-                            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 text-white shadow-sm">
-                                💰
+                            <span className="flex items-center transition group-hover:-rotate-3">
+                                <img
+                                    src={logo}
+                                    alt="BudgetBuddy Logo"
+                                    className="h-12 w-auto object-contain sm:h-24"
+                                />
                             </span>
                         </Link>
-                        <h1 className="mt-4 text-3xl font-black tracking-tight text-slate-900">
+                        <h1 className="text-3xl font-black tracking-tight text-slate-900">
                             Create your account
                         </h1>
                         <p className="mt-2 text-sm text-slate-600">
                             Start tracking your budget in a cute, simple way.
                         </p>
                     </div>
-                    
+
                     <div className="rounded-[2rem] bg-white/80 p-6 shadow-lg ring-1 ring-slate-200 backdrop-blur sm:p-8">
                         {serverMessage ? (
                             <div className="mb-4 rounded-2xl bg-rose-50 p-4 text-sm text-rose-700 ring-1 ring-rose-200">
@@ -223,7 +228,7 @@ export default function Register() {
                                         {showPass2 ? "Hide" : "Show"}
                                     </button>
                                 </div>
-                                
+
                                 {form.password_confirmation.length > 0 &&
                                 form.password !== form.password_confirmation ? (
                                     <div className="mt-1 text-xs font-semibold text-rose-600">
@@ -245,7 +250,7 @@ export default function Register() {
                             <div className="pt-2 text-center text-sm text-slate-600">
                                 Already have an account?{" "}
                                 <Link
-                                    to="/login"
+                                    href={route("login")}
                                     className="font-semibold text-slate-900 hover:underline"
                                 >
                                     Sign in
@@ -253,7 +258,7 @@ export default function Register() {
                             </div>
                         </form>
                     </div>
-                    
+
                     <div className="mt-6 text-center text-xs text-slate-500">
                         By creating an account, you agree to our Terms &
                         Privacy.
